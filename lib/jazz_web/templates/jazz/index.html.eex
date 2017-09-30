@@ -1,0 +1,78 @@
+<head>
+<style>
+
+  body {
+  background-color: white;
+  color: white;
+  }
+
+  .jumbotron {
+  background-color: white;
+  color: black;
+  }
+
+  #one{
+  background-color: blue;
+  }
+
+  #two{
+  background-color: red;
+  }
+
+  #three{
+  background-color: lightgreen;
+  }
+</style>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+
+function getC(){
+  $.get("api/artists", function(data){
+    $(".jumbotron").html(data[1].name);
+    $("#cool").attr('src', data[1].music);
+    console.log(data[1].music);
+  });
+}
+
+function getM(){
+$.get("api/artists", function(data){
+  $(".jumbotron").html(data[0].name);
+  $("#cool").attr('src', data[0].music);
+  console.log(data[0].music);
+});
+}
+
+function getJ(){
+$.get("api/artists", function(data){
+  $(".jumbotron").html(data[2].name);
+  $("#cool").attr('src', data[2].music);
+  console.log(data[2].music);
+});
+}
+
+
+</script>
+</head>
+<body>
+
+<div class="jumbotron">
+    <h2 id="thing">Click a name to listen to some jazz</h2>
+</div>
+<div id="placeholder">
+<iframe id="cool" class="embed-responsive-item" src=""></iframe>
+
+</div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div id="one" class="col" onclick=getM()>
+      <h2>Miles Davis</h2>
+    </div>
+    <div id="two" class="col-5" onclick=getC()>
+        <h2>Cecil Taylor</h2>
+    </div>
+    <div id="three" class="col" onclick=getJ()>
+        <h2>Jeff Parker</h2>
+    </div>
+  </div>
+</div>
+</body>
